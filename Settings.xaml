@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="WPC.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WPC"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		
+		<Grid Grid.Row="0" HorizontalAlignment="Center" >
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			
+			<TextBlock Grid.Column="0" Text="Host IP" FontSize="20" Margin="0,15,10,0"/>
+			<TextBox Grid.Column="1" x:Name="txtRemoteHost" Width="250" FontSize="20"/>
+		</Grid>
+		
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="0" Text="Port" FontSize="20" Margin="70,15,0,0"/>
+			<TextBox Grid.Column="1" x:Name="txtPort" Width="100" FontSize="20"/>
+		</Grid>
+		
+
+	</Grid>
+</Page>
