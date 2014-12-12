@@ -38,15 +38,11 @@ namespace WPC
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
+			await MusicPD.GetStatus(MPD_IP, MPD_PORT);
 
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
+			VolumeSlider.Value = Double.Parse(MusicPD.Volume.ToString());
         }
 
 		private async Task<string> SendCommand(string command)
@@ -61,19 +57,19 @@ namespace WPC
 				SocketClient client = new SocketClient();
 
 				// Attempt connection to the MPD server
-				Log(String.Format("Connecting to server '{0}' over port {1} ...", MPD_IP, MPD_PORT), true);
+				//Log(String.Format("Connecting to server '{0}' over port {1} ...", MPD_IP, MPD_PORT), true);
 				await client.Connect(MPD_IP, MPD_PORT);
 				//Log(result, false);
 
 				// Attempt to send command to MPD
-				Log(String.Format("Sending '{0}' to server ...", command), true);
+				//Log(String.Format("Sending '{0}' to server ...", command), true);
 				bool result = await client.Send(command + "\n");
 				//Log("Message Sent", false);
 
 				// Receive response from the MPD server
-				Log("Requesting Receive ...", true);
+				//Log("Requesting Receive ...", true);
 				string response = await client.Receive();
-				Log(response, false);
+				//Log(response, false);
 
 				// Close the socket conenction explicitly
 				client.Close();
@@ -88,6 +84,7 @@ namespace WPC
 		private async void btnPlaySong_Click(object sender, RoutedEventArgs e)
 		{
 			await SendCommand("play");
+			txtOutput.Text = await SendCommand("currentsong");
 		}
 
 		private async void btnStopSong_Click(object sender, RoutedEventArgs e)
@@ -103,11 +100,13 @@ namespace WPC
 		private async void btnBackSong_Click(object sender, RoutedEventArgs e)
 		{
 			await SendCommand("previous");
+			txtOutput.Text = await SendCommand("currentsong");
 		}
 
 		private async void btnNextSong_Click(object sender, RoutedEventArgs e)
 		{
 			await SendCommand("next");
+			txtOutput.Text = await SendCommand("currentsong");
 		}
 
 		private async void btnShuffle_Click(object sender, RoutedEventArgs e)
@@ -188,9 +187,10 @@ namespace WPC
 
 		}
 
-		private void VolumeSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+		private async void VolumeSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
 		{
 			var Volume = e.NewValue;
+			await SendCommand(string.Format("setvol {0}", Volume));
 		}
 
     }
