@@ -184,13 +184,18 @@ namespace WPC
 
 		private void Settings_Click(object sender, RoutedEventArgs e)
 		{
-
+			this.Frame.Navigate(typeof(Settings));
 		}
 
 		private async void VolumeSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
 		{
 			var Volume = e.NewValue;
 			await SendCommand(string.Format("setvol {0}", Volume));
+		}
+
+		private void Collection_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(MusicCollection));
 		}
 
     }

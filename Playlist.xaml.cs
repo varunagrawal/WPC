@@ -41,7 +41,7 @@ namespace WPC
 			await client.Send("playlistinfo");
 			string response = await client.Receive();
 
-			FormatPlaylistInfo(response);
+			lvPlaylist.ItemsSource = FormatPlaylistInfo(response);
 		}
 
 		public ObservableCollection<Song> FormatPlaylistInfo(string value)
@@ -115,6 +115,11 @@ namespace WPC
 
 			
 			return playlist;
+		}
+
+		private void lvPlaylist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
 		}
 	}
 }

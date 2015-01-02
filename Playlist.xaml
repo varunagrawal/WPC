@@ -9,6 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		
+		<TextBlock Text="WPC" Margin="20,20" FontSize="50" Grid.Row="0" />	
+		
+		<ListView x:Name="lvPlaylist" ItemsSource="{Binding}" SelectionChanged="lvPlaylist_SelectionChanged" Grid.Row="1" >
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Vertical" Margin="20,10" HorizontalAlignment="Center" >
+						<TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" FontSize="30" />
+						<TextBlock Text="{Binding Artist}" Style="{StaticResource BodyTextBlockStyle}" FontSize="25" Margin="20,0" />
+					</StackPanel>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
     </Grid>
 </Page>
