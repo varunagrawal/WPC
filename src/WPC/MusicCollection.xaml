@@ -29,7 +29,7 @@
 		</ListView>
 		
 	</Grid>
-	
+
 	<Page.BottomAppBar>
 		<CommandBar IsOpen="False">
 			<AppBarButton x:Name="SyncLibrary" Label="Sync" Icon="Sync" Click="SyncLibrary_Click" />
