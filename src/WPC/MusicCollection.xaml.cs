@@ -28,5 +28,15 @@ namespace WPC
 		{
 			this.InitializeComponent();
 		}
+
+		private void lvLibrary_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+
+		private void SyncLibrary_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
