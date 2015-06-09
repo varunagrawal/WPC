@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -36,9 +37,14 @@ namespace WPC
 			
 		}
 
-		private void SyncLibrary_Click(object sender, RoutedEventArgs e)
+		private async void SyncLibrary_Click(object sender, RoutedEventArgs e)
 		{
+			if(await AcceptSync())
+			{
+				ObservableCollection<Song> library = GetLibraryCollection();
 
+				lvLibrary.ItemsSource = library;
+			}
 		}
 
 		private async Task<bool> AcceptSync()
@@ -52,6 +58,13 @@ namespace WPC
 			await md.ShowAsync();
 
 			return accept;
+		}
+
+		private ObservableCollection<Song> GetLibraryCollection()
+		{
+			ObservableCollection<Song> library = new ObservableCollection<Song>();
+
+			return library;
 		}
 	}
 }
