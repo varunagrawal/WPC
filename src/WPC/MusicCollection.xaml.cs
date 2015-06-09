@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,12 +33,25 @@ namespace WPC
 
 		private void lvLibrary_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-
+			
 		}
 
 		private void SyncLibrary_Click(object sender, RoutedEventArgs e)
 		{
 
+		}
+
+		private async Task<bool> AcceptSync()
+		{
+			bool accept = false;
+
+			MessageDialog md = new MessageDialog("Syncing library is a long process. Do you want to continue?");
+			md.Commands.Add(new UICommand("Yes", new UICommandInvokedHandler(x => accept = true)));
+			md.Commands.Add(new UICommand("No", new UICommandInvokedHandler(x => accept = false)));
+
+			await md.ShowAsync();
+
+			return accept;
 		}
 	}
 }
