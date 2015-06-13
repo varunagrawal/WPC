@@ -41,7 +41,7 @@ namespace WPC
 		{
 			if(await AcceptSync())
 			{
-				ObservableCollection<Song> library = GetLibraryCollection();
+				ObservableCollection<Song> library = await GetLibraryCollection();
 
 				lvLibrary.ItemsSource = library;
 			}
@@ -60,7 +60,20 @@ namespace WPC
 			return accept;
 		}
 
-		private ObservableCollection<Song> GetLibraryCollection()
+		private async Task<ObservableCollection<Song>> GetLibraryCollection()
+		{
+			SocketClient client = new SocketClient();
+
+			await client.Connect(State.IP, State.Port);
+			await client.Send("listall");
+			string response = await client.Receive();
+
+			ObservableCollection<Song> library = FormatLibrary(response);
+
+			return library;
+		}
+
+		private ObservableCollection<Song> FormatLibrary(string value)
 		{
 			ObservableCollection<Song> library = new ObservableCollection<Song>();
 
