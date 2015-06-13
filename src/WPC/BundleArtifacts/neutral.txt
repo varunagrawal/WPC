@@ -1,0 +1,4 @@
+MainPackage=D:\Side Projects\WPC\src\WPC\bin\Release\WPC_1.1.0.3_Bundle\WPC_1.1.0.3_AnyCPU.appx
+SymbolPackage=D:\Side Projects\WPC\src\WPC\AppPackages\WPC_1.1.0.3_Test\WPC_1.1.0.3_AnyCPU.appxsym
+ResourcePack=D:\Side Projects\WPC\src\WPC\bin\Release\WPC_1.1.0.3_Bundle\WPC_1.1.0.3_scale-100.appx
+ResourcePack=D:\Side Projects\WPC\src\WPC\bin\Release\WPC_1.1.0.3_Bundle\WPC_1.1.0.3_scale-140.appx
