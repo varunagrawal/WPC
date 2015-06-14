@@ -155,5 +155,14 @@ namespace WPC
 				_socket.Dispose();
 			}
 		}
+
+		public async Task<string> Command(string command)
+		{
+			await Connect(State.IP, State.Port);
+			await Send(command);
+			string response = await Receive();
+
+			return response;
+		}
 	}
 }
