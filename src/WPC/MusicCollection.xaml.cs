@@ -63,10 +63,7 @@ namespace WPC
 		private async Task<ObservableCollection<Song>> GetLibraryCollection()
 		{
 			SocketClient client = new SocketClient();
-
-			await client.Connect(State.IP, State.Port);
-			await client.Send("listall");
-			string response = await client.Receive();
+			string response = await client.Command("listall");
 
 			ObservableCollection<Song> library = FormatLibrary(response);
 
