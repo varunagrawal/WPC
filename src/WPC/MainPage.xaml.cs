@@ -64,7 +64,8 @@ namespace WPC
 				Frame.Navigate(typeof(Settings));
 			}
 			
-			VolumeSlider.Value = Double.Parse(MusicPD.Volume.ToString());
+			double vol = Double.Parse(MusicPD.Volume.ToString());
+			VolumeSlider.Value = vol == -1 ? 100.0 : vol;
 			
         }
 
