@@ -130,7 +130,9 @@
     <Content Include="Assets\WideLogo.scale-140.png" />
     <Content Include="Assets\WideLogo.scale-240.png" />
     <Content Include="Images\Backward.png" />
+    <Content Include="Images\First.png" />
     <Content Include="Images\Forward.png" />
+    <Content Include="Images\Last.png" />
     <Content Include="Images\Pause.png" />
     <Content Include="Images\Play.png" />
     <Content Include="Images\Repeat.png" />
