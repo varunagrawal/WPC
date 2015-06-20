@@ -14,7 +14,7 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		
-		<TextBlock Text="WPC" Margin="20,20" FontSize="50" Grid.Row="0" />	
+		<TextBlock Text="Current Playlist" Margin="20,20" FontSize="50" Grid.Row="0" />	
 		
 		<ListView x:Name="lvPlaylist" ItemsSource="{Binding}" SelectionChanged="lvPlaylist_SelectionChanged" Grid.Row="1" >
 			<ListView.ItemTemplate>
