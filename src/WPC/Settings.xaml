@@ -37,4 +37,11 @@
 		
 
 	</Grid>
+
+	<Page.BottomAppBar>
+		<CommandBar>
+			<AppBarButton Name="Save" Label="Save" Click="Save_Click" Icon="Save" />
+		</CommandBar>
+	</Page.BottomAppBar>
+	
 </Page>

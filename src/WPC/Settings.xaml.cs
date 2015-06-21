@@ -37,5 +37,16 @@ namespace WPC
 			txtRemoteHost.Text = State.IP;
 			txtPort.Text = State.Port;
 		}
+
+		private void Save_Click(object sender, RoutedEventArgs e)
+		{
+			State.IP = txtRemoteHost.Text;
+			State.Port = txtPort.Text;
+
+			if (Frame.CanGoBack)
+				Frame.GoBack();
+			else
+				Frame.Navigate(typeof(MainPage));
+		}
 	}
 }
