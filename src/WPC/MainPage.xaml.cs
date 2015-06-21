@@ -61,6 +61,7 @@ namespace WPC
 			{
 				MessageDialog md = new MessageDialog("Error! Please make sure MPD is running and IP is specified.");
 				await md.ShowAsync();
+				Frame.Navigate(typeof(Settings));
 			}
 			
 			VolumeSlider.Value = Double.Parse(MusicPD.Volume.ToString());
