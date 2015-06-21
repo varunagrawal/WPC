@@ -53,7 +53,10 @@ namespace WPC
 		private static void WriteSetting(string key, string value)
 		{
 			var settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-			settings.Values.Add(key, value);
+			if (settings.Values.Keys.Contains(key))
+				settings.Values[key] = value;
+			else
+				settings.Values.Add(key, value);
 		}
 	}
 }
