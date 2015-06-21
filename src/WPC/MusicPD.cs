@@ -42,7 +42,7 @@ namespace WPC
 		{
 			string result = string.Empty;
 
-			if (!string.IsNullOrEmpty(host))
+			try
 			{
 				// Instantiate the SocketClient object
 				SocketClient client = new SocketClient();
@@ -64,12 +64,16 @@ namespace WPC
 
 				return result;
 			}
-			else
+			catch(Exception ex)
 			{
-				return "Invalid Host";
+				throw ex;
 			}
 		}
 
+		/// <summary>
+		/// Set the MPD status on the client, such as volume, repeat, shuffle etc.
+		/// </summary>
+		/// <param name="data"></param>
 		public static void SetStatus(string[] data)
 		{
 			foreach (string str in data)

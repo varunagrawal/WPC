@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,9 +41,30 @@ namespace WPC
         /// This parameter is typically used to configure the page.</param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-			await MusicPD.GetStatus(MPD_IP, MPD_PORT);
+			if(MPD_IP == null)
+			{
+				this.Frame.Navigate(typeof(Settings));
+			}
 
+			bool except = false;
+				
+			try
+			{
+				await MusicPD.GetStatus(MPD_IP, MPD_PORT);
+			}
+			catch(Exception)
+			{
+				except = true;
+			}
+
+			if(except)
+			{
+				MessageDialog md = new MessageDialog("Error! Please make sure MPD is running and IP is specified.");
+				await md.ShowAsync();
+			}
+			
 			VolumeSlider.Value = Double.Parse(MusicPD.Volume.ToString());
+			
         }
 
 		private async Task<string> SendCommand(string command)
