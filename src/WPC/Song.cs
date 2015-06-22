@@ -17,6 +17,8 @@ namespace WPC
 
 		public long Time { get; set; }
 
+		public string Filename { get; set; }
+
 		public Song()
 		{ }
 
