@@ -156,6 +156,11 @@ namespace WPC
 			}
 		}
 
+		/// <summary>
+		/// Wrapper function to send MPD command.
+		/// </summary>
+		/// <param name="command"></param>
+		/// <returns></returns>
 		public async Task<string> Command(string command)
 		{
 			await Connect(State.IP, State.Port);
@@ -164,5 +169,7 @@ namespace WPC
 
 			return response;
 		}
+
+
 	}
 }
