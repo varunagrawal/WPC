@@ -17,7 +17,7 @@ namespace WPC
 
 		public long Time { get; set; }
 		
-		public long TrackNo { get; set; }
+		public long Track { get; set; }
 
 		public string Date { get; set; }
 
