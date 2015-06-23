@@ -63,7 +63,9 @@ namespace WPC
 		private async Task<ObservableCollection<Song>> GetLibraryCollection()
 		{
 			SocketClient client = new SocketClient();
-			string response = await client.Command("listall");
+
+			// Get all songs in the song library with metadata
+			string response = await client.Command("listallinfo");
 
 			ObservableCollection<Song> library = await FormatLibrary(response);
 
@@ -80,8 +82,15 @@ namespace WPC
 			{
 				if(v.Contains("file"))
 				{
-					Song s = await GetSongDetails(v.Substring(6));
-					library.Add(s);
+					try
+					{
+						Song s = await GetSongDetails(v.Substring(6));
+						library.Add(s);
+					}
+					catch(Exception ex)
+					{
+
+					}
 				}
 			}
 
@@ -113,23 +122,27 @@ namespace WPC
 				{
 					s.Artist = t.Substring("Artist: ".Length);
 				}
-				else if (t.Contains("Title")) 
+				else if (t.Contains("AlbumArtist"))
+				{
+					s.Artist = t.Substring("AlbumArtist: ".Length);
+				}
+				else if (t.Contains("Title"))
 				{
 					s.Title = t.Substring("Title: ".Length);
 				}
-				else if (t.Contains("Album")) 
+				else if (t.Contains("Album"))
 				{
 					s.Album = t.Substring("Album: ".Length);
 				}
-				else if (t.Contains("Track")) 
+				else if (t.Contains("Track"))
 				{
 					s.Track = t.Substring("Track: ".Length);
 				}
-				else if (t.Contains("Date")) 
+				else if (t.Contains("Date"))
 				{
 					s.Date = t.Substring("Date: ".Length);
 				}
-				else if (t.Contains("Genre")) 
+				else if (t.Contains("Genre"))
 				{
 					s.Genre = t.Substring("Genre: ".Length);
 				}
