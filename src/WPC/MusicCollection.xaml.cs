@@ -72,83 +72,70 @@ namespace WPC
 			return library;
 		}
 
-		private async Task<ObservableCollection<Song>> FormatLibrary(string value)
+		private ObservableCollection<Song> FormatLibrary(string value)
 		{
 			ObservableCollection<Song> library = new ObservableCollection<Song>();
 
-			List<string> values = new List<string>(value.Split('\n'));
-
-			foreach(string v in values)
+			try
 			{
-				if(v.Contains("file"))
-				{
-					try
-					{
-						Song s = await GetSongDetails(v.Substring(6));
-						library.Add(s);
-					}
-					catch(Exception ex)
-					{
+				string[] details = value.Split('\n');
 
+				Song s = null;
+
+				foreach (string t in details)
+				{
+					if (t.Contains("file"))
+					{
+						if (s != null)
+							library.Add(s);
+
+						s = new Song();
+						s.Filename = t.Substring("file: ".Length);
+					}
+					else if (t.Contains("Time"))
+					{
+						s.Time = long.Parse(t.Substring("Time: ".Length));
+					}
+					else if (t.Contains("AlbumArtist"))
+					{
+						s.Artist = t.Substring("AlbumArtist: ".Length);
+					}
+					else if (t.Contains("Artist"))
+					{
+						s.Artist = t.Substring("Artist: ".Length);
+					}
+					else if (t.Contains("Title"))
+					{
+						s.Title = t.Substring("Title: ".Length);
+					}
+					else if (t.Contains("Album"))
+					{
+						s.Album = t.Substring("Album: ".Length);
+					}
+					else if (t.Contains("Track"))
+					{
+						s.Track = t.Substring("Track: ".Length);
+					}
+					else if (t.Contains("Date"))
+					{
+						s.Date = t.Substring("Date: ".Length);
+					}
+					else if (t.Contains("Genre"))
+					{
+						s.Genre = t.Substring("Genre: ".Length);
 					}
 				}
+
+				library.Add(s);
 			}
+			catch(Exception ex)
+			{
 
+			}
 			
-
+		
 			return library;
 		}
 
-		private async Task<Song> GetSongDetails(string file)
-		{
-			SocketClient client = new SocketClient();
-			string response = await client.Command(string.Format(@"find file ""{0}""", file));
-
-			string[] details = response.Split('\n');
-
-			Song s = new Song();
-
-			foreach(string t in details)
-			{
-				if(t.Contains("file"))
-				{
-					s.Filename = t.Substring("file: ".Length);
-				}
-				else if (t.Contains("Time")) 
-				{
-					s.Time = long.Parse(t.Substring("Time: ".Length));
-				}
-				else if (t.Contains("Artist")) 
-				{
-					s.Artist = t.Substring("Artist: ".Length);
-				}
-				else if (t.Contains("AlbumArtist"))
-				{
-					s.Artist = t.Substring("AlbumArtist: ".Length);
-				}
-				else if (t.Contains("Title"))
-				{
-					s.Title = t.Substring("Title: ".Length);
-				}
-				else if (t.Contains("Album"))
-				{
-					s.Album = t.Substring("Album: ".Length);
-				}
-				else if (t.Contains("Track"))
-				{
-					s.Track = t.Substring("Track: ".Length);
-				}
-				else if (t.Contains("Date"))
-				{
-					s.Date = t.Substring("Date: ".Length);
-				}
-				else if (t.Contains("Genre"))
-				{
-					s.Genre = t.Substring("Genre: ".Length);
-				}
-			}
-
-			return s;
-		}
 	}
 }
