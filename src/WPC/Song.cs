@@ -16,6 +16,12 @@ namespace WPC
 		public string Album { get; set; }
 
 		public long Time { get; set; }
+		
+		public long TrackNo { get; set; }
+
+		public string Date { get; set; }
+
+		public string Genre{ get; set; }
 
 		public string Filename { get; set; }
 
