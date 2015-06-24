@@ -24,8 +24,8 @@ namespace WPC
     /// </summary>
     public sealed partial class MainPage : Page
     {
-		string MPD_IP = State.IP;
-		string MPD_PORT = State.Port;
+		string MPD_IP;
+		string MPD_PORT;
 
         public MainPage()
         {
@@ -41,6 +41,9 @@ namespace WPC
         /// This parameter is typically used to configure the page.</param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+			MPD_IP = State.IP;
+			MPD_PORT = State.Port;
+
 			if(MPD_IP == null)
 			{
 				this.Frame.Navigate(typeof(Settings));
