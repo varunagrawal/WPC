@@ -67,7 +67,7 @@ namespace WPC
 			// Get all songs in the song library with metadata
 			string response = await client.Command("listallinfo");
 
-			ObservableCollection<Song> library = await FormatLibrary(response);
+			ObservableCollection<Song> library = FormatLibrary(response);
 
 			return library;
 		}
