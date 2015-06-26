@@ -192,8 +192,15 @@
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>62760varunagrawal.24GGR</MainPackageIdentityName>
     <MainPackageIdentityName>62760varunagrawal.BirthdayBumper</MainPackageIdentityName>
+    <MainPackageIdentityName>62760varunagrawal.GlobalMACHConnect</MainPackageIdentityName>
     <MainPackageIdentityName>62760varunagrawal.MatrisSVICS</MainPackageIdentityName>
     <MainPackageIdentityName>62760varunagrawal.Novella</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=2a25e4e9-2059-46c8-b380-292af96e3ce3" />
+  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=2a25e4e9-2059-46c8-b380-292af96e3ce3">
+    <PackageInfo>
+      <OsMinVersion>6.3.0.0</OsMinVersion>
+      <PackageArchitecture>neutral</PackageArchitecture>
+      <PackageMaxArchitectureVersion>1.1.0.3</PackageMaxArchitectureVersion>
+    </PackageInfo>
+  </PackageInfoList>
 </StoreAssociation>
