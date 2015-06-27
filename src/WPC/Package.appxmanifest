@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="62760varunagrawal.WPC" Publisher="CN=B7DAB062-CE20-4191-8A4A-B8F9C6C42B46" Version="1.1.0.3" />
+  <Identity Name="62760varunagrawal.WPC" Publisher="CN=B7DAB062-CE20-4191-8A4A-B8F9C6C42B46" Version="1.1.0.5" />
   <mp:PhoneIdentity PhoneProductId="4796f9ca-2c1f-4ada-af07-8c459b82034f" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>WPC</DisplayName>
