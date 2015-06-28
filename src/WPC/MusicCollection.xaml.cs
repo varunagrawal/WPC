@@ -64,19 +64,18 @@ namespace WPC
 		{
 			SocketClient client = new SocketClient();
 
-			// Get all songs in the song library with metadata
-			string response = await client.Command("listallinfo");
-
 			StatusBar statusbar = StatusBar.GetForCurrentView();
 
 			StatusBarProgressIndicator progressIndicator = statusbar.ProgressIndicator;
 			progressIndicator.Text = "Loading library...";
 			await statusbar.ShowAsync();
-			progressIndicator.ShowAsync();
+			await progressIndicator.ShowAsync();
 
+			// Get all songs in the song library with metadata
+			string response = await client.Command("listallinfo");
 			ObservableCollection<Song> library = FormatLibrary(response);
 
-			progressIndicator.HideAsync();
+			await progressIndicator.HideAsync();
 
 			return library;
 		}

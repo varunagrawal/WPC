@@ -84,7 +84,7 @@
 	<Page.BottomAppBar>
 		<CommandBar>
 			<AppBarButton Name="Playlist" Label="Playlist" Click="Playlist_Click" Icon="List" />
-			<AppBarButton Name="Collection" Label="Collection" Click="Collection_Click" Icon="MusicInfo" />
+			<!--AppBarButton Name="Collection" Label="Collection" Click="Collection_Click" Icon="MusicInfo" /-->
 			<AppBarButton Name="Settings" Label="Settings" Click="Settings_Click" Icon="Setting" />
  		</CommandBar>
 	</Page.BottomAppBar>
