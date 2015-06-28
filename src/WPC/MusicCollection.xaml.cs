@@ -67,7 +67,16 @@ namespace WPC
 			// Get all songs in the song library with metadata
 			string response = await client.Command("listallinfo");
 
+			StatusBar statusbar = StatusBar.GetForCurrentView();
+
+			StatusBarProgressIndicator progressIndicator = statusbar.ProgressIndicator;
+			progressIndicator.Text = "Loading library...";
+			await statusbar.ShowAsync();
+			progressIndicator.ShowAsync();
+
 			ObservableCollection<Song> library = FormatLibrary(response);
+
+			progressIndicator.HideAsync();
 
 			return library;
 		}
